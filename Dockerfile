@@ -22,9 +22,9 @@ COPY . $PROJECT_ROOT
 # build npm
 WORKDIR $PROJECT_ROOT/frontend
 
- RUN npm install --no-optional
- RUN npm run build
+RUN npm install --no-optional
+RUN npm run build
 
 WORKDIR $PROJECT_ROOT
 
-CMD python3 backend/app.py
+CMD make run

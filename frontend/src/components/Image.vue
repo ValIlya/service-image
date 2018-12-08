@@ -29,7 +29,7 @@ img {
             <div class="img"><img :src="originalImage"></div>
         </div>
         <div class="col-sm">
-            <div class="img"><img :src="originalImage"></div>
+            <div class="img"><img :src="transformedImage"></div>
         </div>
       </div>
     </div>
@@ -53,20 +53,23 @@ export default {
             submitFile() {
                     let formData = new FormData();
                     formData.append('file', this.file);
+
+                    var vm = this;
                     axios.post('/api/send-file',
                             formData, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data'
                                 }
                             }
-                        ).then(function() {
-                            console.log('file uploaded');
-
+                        ).then(function(response) {
+                            console.log(response);
+                            vm.originalImage = '/api/get/' + vm.file.name;
+                            vm.transformedImage = '/api/get/' + vm.file.name + '?transformed=true'
                         })
                         .catch(error => {
                             console.log(error)
                         });
-                    this.originalImage = '/api/get/' + this.file.name
+
                 },
                 handleFileUpload() {
                     this.file = this.$refs.file.files[0];

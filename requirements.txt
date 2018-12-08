@@ -1,2 +1,7 @@
 flask==1.0.2
 flask-cors==3.0.7
+scikit_image==0.14.1
+matplotlib==3.0.2
+numpy==1.15.4
+scikit-image==0.14.1
+scipy==1.1.0

@@ -1,8 +1,9 @@
-export PYTHONPATH=backend/venv/bin/python
+export PYTHONPATH=.
 
 help:
 	@echo "clean        - remove artifacts"
 	@echo "vendor       - install python requirements"
+	@echo "loadmodel    - download nn models"
 	@echo "vendorjs     - install npm packages"
 	@echo "buildjs      - npm build"
 	@echo "run          - flask run"
@@ -10,6 +11,9 @@ help:
 
 vendor:
 	pip install -r requirements.txt
+
+loadmodel:
+	@cd models; sh download.sh
 
 vendorjs: clean
 	@cd frontend; npm install
