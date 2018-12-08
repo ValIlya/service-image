@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Home from '@/components/Home'
+import Api from '@/components/Api'
+import Image from '@/components/Image'
 import About from '@/components/About'
 import NotFound from '@/components/NotFound'
 
@@ -11,13 +11,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Image',
+      component: Image
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
+      path: '/api',
+      name: 'Api',
+      component: Api
     },
     {
       path: '/about',

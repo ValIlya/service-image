@@ -3,6 +3,8 @@
     <p>Home page</p>
     <p>Random number from backend: {{ randomNumber }}</p>
     <button @click="getRandom" class="btn btn-primary">New random number</button>
+    <button @click="getAlert">Alert example</button>
+    <FlashMessage></FlashMessage>
   </div>
 </template>
 
@@ -11,17 +13,12 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      randomNumber: 0
+      randomNumber: 0,
+      text: 'Lorem ipsum dolor sit amet'
     }
   },
   methods: {
-    getRandomInt (min, max) {
-      min = Math.ceil(min)
-      max = Math.floor(max)
-      return Math.floor(Math.random() * (max - min + 1)) + min
-    },
     getRandom () {
-      // this.randomNumber = this.getRandomInt(1, 100)
       this.randomNumber = this.getRandomFromBackend()
     },
     getRandomFromBackend () {
@@ -33,7 +30,14 @@ export default {
         .catch(error => {
           console.log(error)
         })
-    }
+    },
+    getAlert () {
+      this.flashMessage.show({
+        status: 'error',
+        title: 'Error Message Title',
+        message: 'Oh, you broke my heart! Shame on you!'
+      })
+    },
   },
   created () {
     this.getRandom()
