@@ -61,9 +61,10 @@ def save_file():
 
 @app.route('/api/get/<path:filename>')
 def get_picture(filename):
-    if allowed_file(filename) and os.path.isfile(filename):
+    filepath = '../input/' + filename
+    if allowed_file(filename) and os.path.isfile(filepath):
         return send_file(
-            '../input/' + filename,
+            filepath,
             mimetype='image/gif'
         )
     else:
