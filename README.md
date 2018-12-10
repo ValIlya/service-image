@@ -1,4 +1,4 @@
-# service-image
+# Image Colorization Web Service
 
 ## Colorization Model
 [Richard Zhang](https://github.com/richzhang/colorization)
@@ -10,13 +10,12 @@ Vue.js + Bootstrap
 
 [ReadMe](frontend/README.md)
 
-##Backend
+## Backend
 
 flask
 
 ## Docker image
 
 ```shell
-docker build -t service-item:latest .
-docker run -d -p 8080:8080 service-item:latest
+make dockerrun
 ```

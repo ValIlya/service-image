@@ -7,7 +7,10 @@ help:
 	@echo "vendorjs     - install npm packages"
 	@echo "buildjs      - npm build"
 	@echo "run          - flask run"
+	@echo "test         - run python tests"
 	@echo "build        - npm build + flask run"
+	@echo "dockerbuild  - build docker image"
+	@echo "dockerrun    - run service in docker"
 
 vendor:
 	pip install -r requirements.txt
@@ -27,7 +30,15 @@ buildjs: clean
 	@cd frontend; npm run build
 
 run:
-	PYTHONPATH=$(PYTHONPATH) python backend/app.py
+	PYTHONPATH=$(PYTHONPATH) python backend/service.py
+
+test:
+	PYTHONPATH=$(PYTHONPATH) python -m pytest ./tests -v
 
 build: buildjs run
 
+dockerbuild:
+	docker build -t valyaevilya/service-image-colorization:latest .
+
+dockerrun:
+	docker run -d -p 8080:8080 valyaevilya/service-image-colorization

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Api from '@/components/Api'
+import Gallery from '@/components/Gallery'
 import Image from '@/components/Image'
 import About from '@/components/About'
 import NotFound from '@/components/NotFound'
@@ -15,9 +15,9 @@ export default new Router({
       component: Image
     },
     {
-      path: '/api',
-      name: 'Api',
-      component: Api
+      path: '/gallery',
+      name: 'Gallery',
+      component: Gallery
     },
     {
       path: '/about',

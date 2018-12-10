@@ -12,7 +12,6 @@ H_out, W_out = 56, 56
 
 
 def init_model():
-    net = 'caffe-model'
     net = caffe.Net(PROTOTXT_PATH, MODEL_PATH, caffe.TEST)
     pts_in_hull = np.load('models/pts_in_hull.npy')  # load cluster centers
     net.params['class8_ab'][0].data[:, :, 0, 0] = pts_in_hull.transpose(
