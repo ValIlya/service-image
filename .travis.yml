@@ -1,13 +1,13 @@
 language: python
 
 python:
-  - "3.5"
   - "3.6"
-  - "3.7"
 
 services:
   - docker
 
+before_install:
+  - docker build -t valyaevilya/service-image-colorization:test .
+
 script:
-  - docker build -t app:test .
-  - docker run -d -p 8080:8080 app:test /bin/sh -c "make test"
+  - docker run -d -p 8080:8080 valyaevilya/service-image-colorization:test /bin/sh -c 'make test'
