@@ -1,0 +1,13 @@
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+  - "3.7"
+
+services:
+  - docker
+
+script:
+  - docker build -t app:test .
+  - docker run -d -p 8080:8080 app:test /bin/sh -c "make test"
